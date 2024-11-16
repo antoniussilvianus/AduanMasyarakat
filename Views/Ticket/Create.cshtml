@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Buat Aduan";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Aduan Masyarakat</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #74b9ff, #81ecec);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+
+        .btn-submit {
+            background-color: #2980b9;
+            border: none;
+        }
+
+            .btn-submit:hover {
+                background-color: #74b9ff;
+            }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 100px);">
+        <div class="form-container">
+            <h2 class="text-center mb-4">Buat Aduan</h2>
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="Nama" class="form-control" placeholder="Masukkan Nama Anda" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="nik">NIK:</label>
+                    <input type="text" id="nik" name="NIK" class="form-control" placeholder="Masukkan NIK Anda" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="provinsi">Provinsi:</label>
+                    <input type="text" id="provinsi" name="Provinsi" class="form-control" placeholder="Masukkan Provinsi" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="kabupaten">Kabupaten:</label>
+                    <input type="text" id="kabupaten" name="Kabupaten" class="form-control" placeholder="Masukkan Kabupaten" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="kota">Kota:</label>
+                    <input type="text" id="kota" name="Kota" class="form-control" placeholder="Masukkan Kota" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="phoneNumber">Nomor Telepon:</label>
+                    <input type="text" id="phoneNumber" name="PhoneNumber" class="form-control" placeholder="Masukkan Nomor Telepon" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="incidentDate">Tanggal Kejadian:</label>
+                    <input type="datetime-local" id="incidentDate" name="IncidentDate" class="form-control" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="location">Lokasi:</label>
+                    <input type="text" id="location" name="Location" class="form-control" placeholder="Masukkan Lokasi" required />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="description">Deskripsi:</label>
+                    <textarea id="description" name="Description" class="form-control" placeholder="Masukkan Deskripsi Aduan" rows="4" required></textarea>
+                </div>
+
+                
+
+                <button type="submit" class="btn btn-submit w-100">Submit Aduan</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 - Aduan Masyarakat - <a href="/Home/Privacy" class="text-white text-decoration-none">Privacy</a>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

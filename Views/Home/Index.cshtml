@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Aduan Masyarakat</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .info-section {
+            background-color: #00838f;
+            color: white;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+        }
+
+            .info-section h1 {
+                font-weight: 700;
+                font-size: 48px;
+            }
+
+            .info-section p {
+                font-size: 18px;
+            }
+
+        .login-section {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+
+        .login-card {
+            width: 80%;
+            max-width: 400px;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
+
+    <script>
+        // Fungsi untuk redirect berdasarkan role
+        function handleLogin(event) {
+            event.preventDefault(); // Mencegah form submit default
+
+            // Ambil value dari dropdown role
+            var selectedRole = document.querySelector("select[name='role']").value;
+
+            // Validasi input role
+            if (!selectedRole) {
+                alert("Silakan pilih role terlebih dahulu.");
+                return;
+            }
+
+            // Redirect berdasarkan role yang dipilih
+            switch (selectedRole) {
+                case "Admin":
+                    window.location.href = "/Auth/Login?role=Admin"; // Redirect ke halaman Admin
+                    break;
+                case "TeamLapangan":
+                    window.location.href = "/Auth/Login?role=TeamLapangan"; // Redirect ke halaman Tim Lapangan
+                    break;
+                case "User":
+                    window.location.href = "/Ticket/Create"; // Redirect ke halaman buat aduan Masyarakat
+                    break;
+                default:
+                    alert("Role tidak valid!");
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Kolom Kiri -->
+        <div class="info-section">
+            <h1>Selamat Datang di Sistem Pengaduan Masyarakat</h1>
+            <p>Layanan pengaduan yang transparan dan solutif untuk membantu Anda melaporkan masalah di lingkungan sekitar Anda.</p>
+        </div>
+
+        <!-- Kolom Kanan: Form Login -->
+        <div class="login-section">
+            <div class="login-card">
+                <h3 class="text-center">Login ke Sistem</h3>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="role">Pilih Role</label>
+                        <select id="role" name="role" class="form-control" required>
+                            <option value="" disabled selected>-- Pilih Role --</option>
+                            <option value="Admin">Admin</option>
+                            <option value="TeamLapangan">Tim Lapangan</option>
+                            <option value="User">Masyarakat</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-login">Sign in</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
